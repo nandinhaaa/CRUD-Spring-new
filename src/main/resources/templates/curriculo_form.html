@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <div th:replace="cabecalho :: head"></div>
+
+    <title>Crud Manager - Currículo</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+    <div class="container my-2">
+        <h2>Currículo</h2>
+        <form action="#" th:action="@{/curriculos/new}" th:object="${curriculo}" method="POST">
+            <input type="hidden" th:field="*{id}" id="id">
+            <div class="d-flex flex-column">
+                <input type="text" th:field="*{name}" placeholder="Nome" class="form-control mb-4 col-4">
+                <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+                <input type="text" th:field="*{linguagem}" placeholder="Linguagem com experiência" class="form-control mb-4 col-4">
+                <div class="form-check mb-4">
+                    <input type="checkbox" class="form-check-input" th:field="*{remoto}" id="remoto">
+                    <label class="form-check-label" for="remoto">Remoto</label>
+                </div>
+                <button type="submit" class="btn btn-info col-2">Salvar</button>
+            </div>
+        </form>
+        <hr>
+        <a th:href="@{/curriculos}">Currículos</a>
+    </div>
+
+</body>
+
+</html>
