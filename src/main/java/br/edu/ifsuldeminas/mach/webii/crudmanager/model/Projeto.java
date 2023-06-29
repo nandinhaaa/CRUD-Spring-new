@@ -1,12 +1,15 @@
 package br.edu.ifsuldeminas.mach.webii.crudmanager.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,23 +20,23 @@ public class Projeto {
 	@GeneratedValue(strategy = GenerationType.AUTO) // gerar uma chave auto incremento
 	private Integer id;
 	private String name;
-	private String email;
+	private String complexidade;
 	private String descricao;
 	
-	@ManyToMany
-	private List<User> users;
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Curriculo> curriculos = new ArrayList<>();
 
 
 	public Projeto() {
 		setName("");
-		setEmail("");
+		setComplexidade("");
 		setDescricao("");
 	}
 
 	public Projeto(Integer id) {
 		this.id = id;
 		setName("");
-		setEmail("");
+		setComplexidade("");
 		setDescricao("");
 	}
 
@@ -53,12 +56,12 @@ public class Projeto {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getComplexidade() {
+		return complexidade;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setComplexidade(String email) {
+		this.complexidade = email;
 	}
 
 	public String getDescricao() {
@@ -69,12 +72,14 @@ public class Projeto {
 		this.descricao = descricao;
 	} // criar os obj vazios
 
-	public List<User> getUsers() {
-	    return users;
+	public List<Curriculo> getCurriculos() {
+		return curriculos;
 	}
-		
-	public void setUsers(List<User> users) {
-	    this.users = users;
+
+	public void setCurriculos(List<Curriculo> curriculos) {
+		this.curriculos = curriculos;
 	}
+
+
 
 }

@@ -20,11 +20,16 @@
 			           <input type="hidden" th:field="*{id}" id="id">    
 			                   <input type="text" th:field="*{name}"
 				placeholder="Nome" class="form-control mb-4 col-4">        
-			               <input type="text" th:field="*{email}"
-				placeholder="Email" class="form-control mb-4 col-4">        
-			               <input type="text" th:field="*{descricao}"
-				placeholder="Descricao" class="form-control mb-4 col-4">      
-			                 
+			              <select th:field="*{complexidade}"
+				class="form-control mb-4 col-4">
+				<option value="facil">Fácil</option>
+				<option value="medio">Médio</option>
+				<option value="avancado">Avançado</option>
+			</select>                      <input type="text" th:field="*{descricao}"
+				placeholder="Descricao" class="form-control mb-4 col-4">    
+				
+				<input type="text" th:field="*{curriculos}" placeholder="ID's dos curriculos" class="form-control mb-4 col-4">
+			                   
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
 			       
 		</form>
