@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +44,10 @@ public class ProjetoController {
 	}
 
 	@PostMapping("/projetos/new")
-	public String userNew(@ModelAttribute("projeto") Projeto projeto) {
+	public String userNew(@Valid @ModelAttribute("projeto") Projeto projeto, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "projeto_form";
+		}
 		List<Curriculo> selectedCurriculos = projeto.getCurriculos();
 		List<Curriculo> curriculos = curriculoRepository.findAllById(selectedCurriculos.stream().map(Curriculo::getId).collect(Collectors.toList()));
 		projeto.setCurriculos(curriculos);

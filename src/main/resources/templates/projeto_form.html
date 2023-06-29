@@ -17,18 +17,28 @@
 		       
 		<form action="#" th:action="@{/projetos/new}" th:object="${projeto}"
 			method="POST">
-			           <input type="hidden" th:field="*{id}" id="id">    
-			                   <input type="text" th:field="*{name}"
-				placeholder="Nome" class="form-control mb-4 col-4">        
-			              <select th:field="*{complexidade}"
-				class="form-control mb-4 col-4">
-				<option value="facil">Fácil</option>
-				<option value="medio">Médio</option>
-				<option value="avancado">Avançado</option>
-			</select>                      <input type="text" th:field="*{descricao}"
-				placeholder="Descricao" class="form-control mb-4 col-4">    
+			<span th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}"
+            class="text-danger"></span>
+			<input type="hidden" th:field="*{id}" id="id">    
+			<input type="text" th:field="*{name}"
+			placeholder="Nome" class="form-control mb-4 col-4">
+			<span th:if="${#fields.hasErrors('complexidade')}"
+	        th:errors="*{complexidade}"
+	        class="text-danger"></span>     
+			<select th:field="*{complexidade}"
+			class="form-control mb-4 col-4">
+			<option value="facil">Fácil</option>
+			<option value="medio">Médio</option>
+			<option value="avancado">Avançado</option>
+			</select>                      
+			<span th:if="${#fields.hasErrors('descricao')}"
+            th:errors="*{descricao}"
+            class="text-danger"></span>
+			<input type="text" th:field="*{descricao}"
+			placeholder="Descricao" class="form-control mb-4 col-4">    
 				
-				<input type="text" th:field="*{curriculos}" placeholder="ID's dos curriculos" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{curriculos}" placeholder="ID's dos curriculos" class="form-control mb-4 col-4">
 			                   
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
 			       

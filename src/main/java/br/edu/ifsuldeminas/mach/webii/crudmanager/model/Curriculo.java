@@ -5,20 +5,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "curriculos")
 public class Curriculo {
 
 	@Id // chave primaria da nossa tabela
-	@GeneratedValue(strategy = GenerationType.AUTO) // gerar uma chave auto incremento
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // gerar uma chave auto incremento
 	private Integer id;
+	
+	@NotBlank(message = "Nome não pode ser vazio")
 	private String name;
+	
+	@NotNull(message = "Idade não pode ser vazio")
 	private Integer idade;
+	
+	@NotBlank (message = "Email não pode ser vazio")
+	@Email(message = "E-mail inválido")
 	private String email;
+	
+	@NotBlank(message = "Sexo não pode ser vazio")
 	private String gender;
+
+	@NotBlank(message = "Linguagem não pode ser vazia")
 	private String linguagem;
+	
+	@NotNull(message = "Informação de remoto ou não obrigatória")
 	private Boolean remoto;
+	
+	
+	
+	
 
 	public Curriculo() {
 		setName("");

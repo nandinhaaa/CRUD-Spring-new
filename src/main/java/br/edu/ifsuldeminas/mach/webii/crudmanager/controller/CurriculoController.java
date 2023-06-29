@@ -3,9 +3,12 @@ package br.edu.ifsuldeminas.mach.webii.crudmanager.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,8 +40,10 @@ public class CurriculoController {
 
 
 	@PostMapping("/curriculos/new")
-	public String curriculoNew(@ModelAttribute("curriculo") Curriculo curriculo) {
-
+	public String curriculoNew(@Valid @ModelAttribute("curriculo") Curriculo curriculo, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "curriculo_form";
+		}
 		curriculoRepository.save(curriculo);
 
 		return "redirect:/curriculos"; // usuario n sabe que isso foi feito é um requisicao interna
@@ -79,5 +84,4 @@ public class CurriculoController {
 
 		return "redirect:/curriculos";
 	}
-
 }

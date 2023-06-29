@@ -11,16 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "projetos")
 public class Projeto {
 
 	@Id // chave primaria da nossa tabela
-	@GeneratedValue(strategy = GenerationType.AUTO) // gerar uma chave auto incremento
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // gerar uma chave auto incremento
 	private Integer id;
+	
+	@NotBlank(message = "Nome não pode ser vazio")
 	private String name;
+	@NotBlank(message = "Complexidade não pode ser vazio")
 	private String complexidade;
+	@NotBlank(message = "Descrição não pode ser vazio")
 	private String descricao;
 	
 	@OneToMany(fetch = FetchType.EAGER)

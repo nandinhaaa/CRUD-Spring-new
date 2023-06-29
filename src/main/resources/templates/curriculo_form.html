@@ -15,14 +15,42 @@
         <form action="#" th:action="@{/curriculos/new}" th:object="${curriculo}" method="POST">
             <input type="hidden" th:field="*{id}" id="id">
             <div class="d-flex flex-column">
+            
+         
+            <span th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}"
+            class="text-danger"></span>
                 <input type="text" th:field="*{name}" placeholder="Nome" class="form-control mb-4 col-4">
+                
+            <span th:if="${#fields.hasErrors('idade')}"
+            th:errors="*{idade}"
+            class="text-danger"></span>
                 <input type="text" th:field="*{idade}" placeholder="Idade" class="form-control mb-4 col-4">
+                
+                
+            <span th:if="${#fields.hasErrors('email')}"
+            th:errors="*{email}"
+            class="text-danger"></span>
                 <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+                
+                  <span th:if="${#fields.hasErrors('gender')}"
+            th:errors="*{gender}"
+            class="text-danger"></span>
                 <input type="text" th:field="*{gender}" placeholder="Gênero" class="form-control mb-4 col-4">
+                
+                  <span th:if="${#fields.hasErrors('linguagem')}"
+            th:errors="*{linguagem}"
+            class="text-danger"></span>
                 <input type="text" th:field="*{linguagem}" placeholder="Linguagem com experiência"
                     class="form-control mb-4 col-4">
+                    
+                    
+                      <span th:if="${#fields.hasErrors('remoto')}"
+            th:errors="*{remoto}"
+            class="text-danger"></span>
                 <div class="form-check mb-4">
                     <input type="checkbox" class="form-check-input" th:field="*{remoto}" id="remoto">
+                
                     <label class="form-check-label" for="remoto">Remoto</label>
                 </div>
                 <button type="submit" class="btn btn-info col-2">Salvar</button>
