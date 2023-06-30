@@ -50,8 +50,10 @@ Crud com Spring, referente a atividade 3 de TECNOLOGIAS DE DESENVOLVIMENTO PARA 
 
 * # Professor da Disciplina
 * Emerson de Carvalho
+* 
+ #### ![alice](https://github.com/nandinhaaa/CRUD-Spring-new/assets/91507393/2a02759f-37c1-428a-b77a-48a797df0c38)
 
- ### ![alice](https://github.com/nandinhaaa/CRUD-Spring-new/assets/91507393/8ddbe2ce-a0d9-4766-a185-db6af1a80da6) ###
+
 
 
   
